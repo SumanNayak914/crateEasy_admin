@@ -1,62 +1,4 @@
-// const dummyOrders = [
-//   { id: 101, customer: "Amit Sharma", amount: 2499, date: "2025-09-01", status: "Pending" },
-//   { id: 102, customer: "Priya Singh", amount: 1599, date: "2025-09-02", status: "Shipped" },
-//   { id: 103, customer: "Rahul Verma", amount: 3999, date: "2025-09-03", status: "Delivered" },
-// ];
 
-// export default function Orders() {
-//   return (
-//     <div>
-//       <h1 className="text-2xl font-bold mb-6">Orders</h1>
-
-//       <div className="overflow-x-auto bg-white rounded-xl shadow-md">
-//         <table className="min-w-full">
-//           <thead className="bg-gray-100 text-gray-600 text-left">
-//             <tr>
-//               <th className="px-6 py-3">Order ID</th>
-//               <th className="px-6 py-3">Customer</th>
-//               <th className="px-6 py-3">Amount</th>
-//               <th className="px-6 py-3">Date</th>
-//               <th className="px-6 py-3">Status</th>
-//               <th className="px-6 py-3">Actions</th>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {dummyOrders.map((order) => (
-//               <tr key={order.id} className="border-b hover:bg-gray-50">
-//                 <td className="px-6 py-3">{order.id}</td>
-//                 <td className="px-6 py-3">{order.customer}</td>
-//                 <td className="px-6 py-3">₹{order.amount}</td>
-//                 <td className="px-6 py-3">{order.date}</td>
-//                 <td className="px-6 py-3">
-//                   <span
-//                     className={`px-3 py-1 rounded-full text-sm font-semibold ${
-//                       order.status === "Pending"
-//                         ? "bg-yellow-100 text-yellow-600"
-//                         : order.status === "Shipped"
-//                         ? "bg-blue-100 text-blue-600"
-//                         : "bg-green-100 text-green-600"
-//                     }`}
-//                   >
-//                     {order.status}
-//                   </span>
-//                 </td>
-//                 <td className="px-6 py-3 space-x-2">
-//                   <button className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600">
-//                     View
-//                   </button>
-//                   <button className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600">
-//                     Cancel
-//                   </button>
-//                 </td>
-//               </tr>
-//             ))}
-//           </tbody>
-//         </table>
-//       </div>
-//     </div>
-//   );
-// }
 import { useState } from "react";
 import { Eye, X, Package, Clock, CheckCircle, Search, Filter, Download } from "lucide-react";
 
@@ -271,23 +213,23 @@ export default function Orders() {
           Showing {filteredOrders.length} of {orders.length} orders
         </div>
 
-        {/* Modal */}
+        {/* Modal with Blur Background */}
         {showModal && selectedOrder && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full max-h-96 overflow-y-auto">
+          <div className="fixed inset-0  bg-white/20 flex items-center justify-center p-4 z-50">
+            <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full">
               <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-6 rounded-t-3xl">
                 <div className="flex items-center justify-between">
                   <h2 className="text-2xl font-bold text-white">Order Details</h2>
                   <button 
                     onClick={() => setShowModal(false)}
-                    className="text-white hover:bg-white hover:bg-opacity-20 p-2 rounded-full transition-all duration-200"
+                    className="text-white hover:text-black hover:bg-opacity-20 p-2 rounded-full transition-all duration-200"
                   >
                     <X className="w-6 h-6" />
                   </button>
                 </div>
               </div>
               
-              <div className="p-6 space-y-4">
+              <div className="p-6 space-y-4 max-h-96 overflow-y-auto scrollbar-hide">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Order ID</label>
@@ -333,6 +275,17 @@ export default function Orders() {
           </div>
         )}
       </div>
+      
+      {/* Custom CSS for hiding scrollbar */}
+      <style jsx>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </div>
   );
 }

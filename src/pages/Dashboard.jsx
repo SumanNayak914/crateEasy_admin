@@ -1,37 +1,4 @@
-// import { motion } from "framer-motion";
-// import StatCard from "../components/Cards/StatCard";
-// import SalesChart from "../components/Charts/SalesChart";
 
-// export default function Dashboard() {
-//   const stats = [
-//     { title: "Total Sales", value: "₹1,20,000" },
-//     { title: "Orders", value: "320" },
-//     { title: "Customers", value: "150" },
-//   ];
-
-//   return (
-//     <div>
-//       <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
-
-//       {/* Stat Cards */}
-//       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-//         {stats.map((stat, index) => (
-//           <motion.div
-//             key={index}
-//             initial={{ opacity: 0, y: 50 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.6, delay: index * 0.2 }}
-//           >
-//             <StatCard title={stat.title} value={stat.value} />
-//           </motion.div>
-//         ))}
-//       </div>
-
-//       {/* Sales Chart */}
-//       <SalesChart />
-//     </div>
-//   );
-// }
 import React, { useState, useEffect } from 'react';
 
 export default function Dashboard() {
